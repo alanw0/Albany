@@ -103,6 +103,7 @@ namespace LandIce
         basalFricHeat(cell,node) = 0.;
 
     const double scyr (3.1536e7);  // [s/yr];
+    //const double scyr (3.1556926e7);  // [s/yr];
 
     if (d.sideSets->find(basalSideName)==d.sideSets->end())
       return;

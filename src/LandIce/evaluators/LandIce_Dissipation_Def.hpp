@@ -48,6 +48,7 @@ namespace LandIce
   evaluateFields(typename Traits::EvalData d)
   {
     const double scyr (3.1536e7);  // [s/yr];
+    //const double scyr (3.1556926e7);  // [s/yr];
     for (std::size_t cell = 0; cell < d.numCells; ++cell)
       for (std::size_t qp = 0; qp < numQPs; ++qp)
         diss(cell,qp) = 1.0/scyr * 4.0 * mu(cell,qp) * epsilonSq(cell,qp);

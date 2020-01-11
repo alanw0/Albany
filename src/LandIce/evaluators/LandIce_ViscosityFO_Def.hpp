@@ -37,6 +37,7 @@ ViscosityFO(const Teuchos::ParameterList& p,
   arrmlh (1.733e3),       // [Pa-3 s-1]
   arrmll (3.613e-13),     // [Pa-3 s-1]
   k4scyr (3.1536e19),     // [s y-1]
+  //k4scyr (3.1556926e19),  // [s y-1]
   arrmh (k4scyr*arrmlh),  // [Pa-3 yr-1]
   arrml (k4scyr*arrmll),  // [Pa-3 yr-1]
 #else

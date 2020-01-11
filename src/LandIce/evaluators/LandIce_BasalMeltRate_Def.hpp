@@ -93,7 +93,8 @@ evaluateFields(typename Traits::EvalData d)
   int vecDimFO = 2;
   double pi = atan(1.) * 4.;
   ScalarT hom = homotopy(0);
-  const double scyr (3.1536e7);  // [s/yr];
+  //const double scyr (3.1536e7);  // [s/yr];
+  const double scyr (3.1556926e7);  // [s/yr];
   ScalarT basal_reg_coeff = basalMelt_reg_alpha*exp(basalMelt_reg_beta*hom); // [adim]
   ScalarT flux_reg_coeff = flux_reg_alpha*exp(flux_reg_beta*hom); // [adim]
 

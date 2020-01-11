@@ -592,6 +592,20 @@ LandIce::Enthalpy::constructEvaluators (PHX::FieldManager<PHAL::AlbanyTraits>& f
       ev = Teuchos::rcp(new LandIce::Dissipation<EvalT,PHAL::AlbanyTraits>(*p,dl));
       fm0.template registerEvaluator<EvalT>(ev);
     }
+    { //save
+      std::string stateName = "LandIce Dissipation";
+      entity = Albany::StateStruct::QuadPoint;
+      p = stateMgr.registerStateVariable(stateName, dl->qp_scalar, elementBlockName, true, &entity, "");
+      p->set<std::string>("Field Name", stateName);
+      p->set("Field Layout", dl->qp_scalar);
+      p->set<bool>("Nodal State", false);
+
+      ev = rcp(new PHAL::SaveStateField<EvalT,AlbanyTraits>(*p));
+      fm0.template registerEvaluator<EvalT>(ev);
+
+      if ((fieldManagerChoice == Albany::BUILD_RESID_FM)&&(ev->evaluatedFields().size()>0))
+        fm0.template requireField<EvalT>(*ev->evaluatedFields()[0]);
+    }
 
     // --- LandIce Viscosity ---
     {
